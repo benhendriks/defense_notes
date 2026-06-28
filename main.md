@@ -256,22 +256,6 @@ Get-NetIPAddress
 ```
 
 ```
-```
-```
-```
-```
-```
-```
-```
-```
-```
-```
-```
-```
-```
-```
-```
-
 ## Using the above command we can list all local users on the system.
 
 ```powershell
@@ -282,7 +266,6 @@ Get-LocalUser
 
 ```powershell
 Get-LocalUser -Name BTLO | select *
-```
 ```
 ```
 
@@ -304,13 +287,6 @@ Get-Process | Format-Table -View priority
 Get-Process -Id 'idhere' | Select * 
 ``` 
 
-```
-```
-```
-```
-```
-```
-
 ## Similar to Services, Scheduled Tasks are often abused and utilized a common persistence technique. With the above command we can list tasks that are set to run after certain conditions are met.
 
 ```powershell
@@ -323,13 +299,6 @@ Get-ScheduledTask
 Get-ScheduledTask -TaskName 'PutANameHere' | Select * 
 ```
 
-```
-```
-```
-```
-
-```
-```
 ## Dienste
 
 ```powershell
