@@ -255,7 +255,6 @@ Get-NetIPConfiguration
 Get-NetIPAddress 
 ```
 
-```
 ## Using the above command we can list all local users on the system.
 
 ```powershell
@@ -266,7 +265,6 @@ Get-LocalUser
 
 ```powershell
 Get-LocalUser -Name BTLO | select *
-```
 ```
 
 ## The above command let’s us quickly identify running services on the system. By piping ( | ) the command to Out-GridView, we are telling PowerShell to show us the results in a nice windows, which is much easier to work with than outputting the results to the PowerShell window.
