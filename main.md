@@ -204,6 +204,132 @@ sha256sum file
 Get-Process
 ```
 
+## This command will get network configuration information from the local system, including the assigned IP address and the device’s MAC address
+
+```powershell
+ipconfig /all
+```  
+
+## This command will check running processes and programs and print a list to the terminal.
+
+```powershell
+tasklist
+``` 
+
+## This command will display running processes and the associated binary file that was executed to create the process.
+
+```powershell
+wmic process get description, executablepath
+```
+
+### This command will print a list of all system users to the terminal.
+
+```powershell
+net user  
+```
+
+## This command will list all users that are in the administrators user group.
+
+```powershell
+net localgroup administrators
+```
+
+## This command will list all services and detailed information about each one.
+
+```powershell
+sc query | more 
+```
+
+## This command will list open ports on a system, which could show the presence of a backdoor.
+
+```powershell
+netstat -ab 
+```
+
+## Similar to ifconfig in CMD, we can use the two above commands to get network-related information from the system.
+
+```powershell
+Get-NetIPConfiguration 
+```
+```powershell
+Get-NetIPAddress 
+```
+
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+```
+
+## Using the above command we can list all local users on the system.
+
+```powershell
+Get-LocalUser 
+```
+
+## We can provide a specific user to the command to only get information about them. Piping ( | ) the results to a “select” with a wildcard ( * ) will give us all of the properties for the command, providing us with valuable information about the account. This can be extremely useful for us as incident responders, especially when we find local accounts that do not expire or have passwords that don’t expire.
+
+```powershell
+Get-LocalUser -Name BTLO | select *
+```
+```
+```
+
+## The above command let’s us quickly identify running services on the system. By piping ( | ) the command to Out-GridView, we are telling PowerShell to show us the results in a nice windows, which is much easier to work with than outputting the results to the PowerShell window.
+
+```powershell
+Get-Service | Where Status -eq "Running" | Out-GridView 
+```
+
+## Another great command is the ability to group running processes by their priority value. Using the above command we can see the process name, the process ID (PID), and other information, where different priority ratings are grouped into tables.
+
+```powershell
+Get-Process | Format-Table -View priority 
+```
+
+## We can collect specific information from a service by including the name in the command (-Name ‘namehere’) or the Id, as shown above and below. Piping to Select * provides us with all the properties.
+
+```powershell
+Get-Process -Id 'idhere' | Select * 
+``` 
+
+```
+```
+```
+```
+```
+```
+
+## Similar to Services, Scheduled Tasks are often abused and utilized a common persistence technique. With the above command we can list tasks that are set to run after certain conditions are met.
+
+```powershell
+Get-ScheduledTask 
+```
+
+## We can dig deeper by specifying the task we’re interested in, and retrieving all properties for it.
+
+```powershell
+Get-ScheduledTask -TaskName 'PutANameHere' | Select * 
+```
+
+```
+```
+```
+```
+
+```
+```
 ## Dienste
 
 ```powershell
@@ -470,5 +596,4 @@ MountedDevices
 
 ```
 ```
-:wq
 
