@@ -196,6 +196,52 @@ sha256sum file
 
 ---
 
+# CMD One-Liner
+
+## This command will get network configuration information from the local system, including the assigned IP address and the device’s MAC address
+
+```cmdline
+ipconfig /all
+```  
+
+## This command will check running processes and programs and print a list to the terminal.
+
+```cmdline
+tasklist
+``` 
+
+## This command will display running processes and the associated binary file that was executed to create the process.
+
+```cmdline
+wmic process get description, executablepath
+```
+
+### This command will print a list of all system users to the terminal.
+
+```cmdline
+net user  
+```
+
+## This command will list all users that are in the administrators user group.
+
+```cmdline
+net localgroup administrators
+```
+
+## This command will list all services and detailed information about each one.
+
+```cmdline
+sc query | more 
+```
+
+## This command will list open ports on a system, which could show the presence of a backdoor.
+
+```cmdline
+netstat -ab 
+```
+
+--- 
+
 # PowerShell One-Liner
 
 ## Prozesse
@@ -204,46 +250,34 @@ sha256sum file
 Get-Process
 ```
 
-## This command will get network configuration information from the local system, including the assigned IP address and the device’s MAC address
+## Dienste
 
 ```powershell
-ipconfig /all
-```  
-
-## This command will check running processes and programs and print a list to the terminal.
-
-```powershell
-tasklist
-``` 
-
-## This command will display running processes and the associated binary file that was executed to create the process.
-
-```powershell
-wmic process get description, executablepath
+Get-Service
 ```
 
-### This command will print a list of all system users to the terminal.
+## Netzwerk
 
 ```powershell
-net user  
+Get-NetTCPConnection
 ```
 
-## This command will list all users that are in the administrators user group.
+## Eventlogs
 
 ```powershell
-net localgroup administrators
+Get-WinEvent -LogName Security
 ```
 
-## This command will list all services and detailed information about each one.
+## Dateien
 
 ```powershell
-sc query | more 
+Get-ChildItem -Recurse
 ```
 
-## This command will list open ports on a system, which could show the presence of a backdoor.
+## Hash
 
 ```powershell
-netstat -ab 
+Get-FileHash file.exe -Algorithm SHA256
 ```
 
 ## Similar to ifconfig in CMD, we can use the two above commands to get network-related information from the system.
@@ -288,6 +322,7 @@ Get-Process -Id 'idhere' | Select *
 ## Similar to Services, Scheduled Tasks are often abused and utilized a common persistence technique. With the above command we can list tasks that are set to run after certain conditions are met.
 
 ```powershell
+
 Get-ScheduledTask 
 ```
 
@@ -297,35 +332,6 @@ Get-ScheduledTask
 Get-ScheduledTask -TaskName 'PutANameHere' | Select * 
 ```
 
-## Dienste
-
-```powershell
-Get-Service
-```
-
-## Netzwerk
-
-```powershell
-Get-NetTCPConnection
-```
-
-## Eventlogs
-
-```powershell
-Get-WinEvent -LogName Security
-```
-
-## Dateien
-
-```powershell
-Get-ChildItem -Recurse
-```
-
-## Hash
-
-```powershell
-Get-FileHash file.exe -Algorithm SHA256
-```
 
 ---
 
